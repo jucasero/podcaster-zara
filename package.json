@@ -1,12 +1,14 @@
 {
   "name": "podcaster-zara",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "author": "Julian Sepulveda <juliank1337@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "start": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
