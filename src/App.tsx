@@ -1,9 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import reactLogo from './assets/react.svg';
 import './App.css';
+import { useAppDispatch, useAppSelector } from './hooks/useStore';
+import { getPodcasts } from './state/features/podcast/thunk';
 
 function App() {
+  const dispatch = useAppDispatch();
+  const { data } = useAppSelector((state) => state.podcasts);
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
+  useEffect(() => {
+    dispatch(getPodcasts());
+  }, []);
 
   return (
     <div className='App'>
