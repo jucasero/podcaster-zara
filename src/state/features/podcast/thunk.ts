@@ -40,8 +40,11 @@ export const getPodcasts = () => async (dispatch: AppDispatch) => {
 export const getPodcastInfoById = (id: string) => async (dispatch: AppDispatch) => {
   dispatch(podcastsByIdLoading());
   try {
-    const response = await itunesApi.get(`/lookup?id=${id}&country=US&media=podcast&entity=podcastEpisode`);
-    const podcastData = response.data.results;
+    const itunesUrl = `https://itunes.apple.com/lookup?id=${id}&country=US&media=podcast&entity=podcastEpisode`;
+    const allOriginsResponse: any = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(itunesUrl)}`);
+    const allOriginsResponseObject = await allOriginsResponse.json();
+    const response = JSON.parse(allOriginsResponseObject.contents);
+    const podcastData = response.results;
     const podcastListFormated: IPodcastDetail[] = podcastData.map((episode: any) => ({
       id: episode.trackId,
       title: episode.trackName,
