@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { EpisodesInfo, Home, PodcastDetail } from './views';
+import { EpisodeCard, EpisodesInfo, Home, PodcastDetail } from './views';
 import { AppRoutes } from './constants/Routes';
 import { GenericMessage, Header } from './components';
 import './app.css';
@@ -12,6 +12,7 @@ function App() {
           <Route path='' element={<Home />} />
           <Route path={AppRoutes.podcastDetail} element={<PodcastDetail />}>
             <Route path='' element={<EpisodesInfo />} />
+            <Route path={AppRoutes.episodeDetail} element={<EpisodeCard />} />
           </Route>
           <Route path={AppRoutes.notFound} element={<GenericMessage title='404' subtitle='Página no encontrada' />} />
         </Route>
