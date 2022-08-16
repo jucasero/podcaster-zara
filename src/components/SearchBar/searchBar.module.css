@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+}
+
+.resetButton {
+  font-size: 1.25rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 900;
+  color: var(--light-color);
+  background-color: var(--primary-color);
+}
+
+.resetButton:hover {
+  cursor: pointer;
+}

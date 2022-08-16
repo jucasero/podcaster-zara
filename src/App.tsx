@@ -1,40 +1,18 @@
-import { useEffect, useState } from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
-import { useAppDispatch, useAppSelector } from './hooks/useStore';
-import { getPodcasts } from './state/features/podcast/thunk';
+import { Route, Routes } from 'react-router-dom';
+import { Home } from './views';
+import { AppRoutes } from './constants/Routes';
+import { GenericMessage, Header } from './components';
+import './app.css';
 
 function App() {
-  const dispatch = useAppDispatch();
-  const { data } = useAppSelector((state) => state.podcasts);
-  const [count, setCount] = useState(0);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
-  useEffect(() => {
-    dispatch(getPodcasts());
-  }, []);
-
   return (
-    <div className='App'>
-      <div>
-        <a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
-          <img src='/vite.svg' className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://reactjs.org' target='_blank' rel='noreferrer'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
+    <div className='container'>
+      <Routes>
+        <Route path={AppRoutes.root} element={<Header title='Podcaster' />}>
+          <Route path='' element={<Home />} />
+          <Route path={AppRoutes.notFound} element={<GenericMessage title='404' subtitle='Página no encontrada' />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

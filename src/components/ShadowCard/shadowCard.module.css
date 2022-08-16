@@ -1,0 +1,4 @@
+.container {
+  border-radius: 4px;
+  box-shadow: -1px 3px 8px var(--secondary-color);
+}
