@@ -1,0 +1,1 @@
+export { EpisodesTableCard } from './EpisodesTableCard';

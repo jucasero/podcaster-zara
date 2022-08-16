@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../hooks/useStore';
 import { IPodcast } from '../../state/features/podcast/models';
+import { select } from '../../state/features/podcast/podcastSlice';
 import { PodcastCard } from '../PodcastCard';
 import podcastListStiles from './podcastList.module.css';
 
@@ -7,7 +10,13 @@ interface IPodcastListProps {
 }
 
 export const PodcastList: React.FC<IPodcastListProps> = ({ list }: IPodcastListProps) => {
-  const handleOnClickCard = (podcast: IPodcast) => {};
+  const navigator = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const handleOnClickCard = (podcast: IPodcast) => {
+    dispatch(select(podcast));
+    navigator(`podcast/${podcast.id}`);
+  };
 
   return (
     <section className={podcastListStiles.container}>

@@ -1,0 +1,31 @@
+.container {
+  margin: 0 10px;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  border-bottom: solid 1px var(--secondary-color);
+}
+
+.image {
+  border-radius: 5px;
+}
+.body {
+  padding: 20px 0;
+  border-bottom: solid 1px var(--secondary-color);
+}
+.summaryTitle {
+  margin-bottom: 10px;
+}
+.summary {
+  font-style: italic;
+  font-weight: 400;
+}
+.footerTitle {
+  margin-top: 20px;
+}
+.footerText {
+  margin: 10px 0 20px 0;
+}

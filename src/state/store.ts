@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { podcastsReducer } from './features/podcast/podcastSlice';
+import { podcastsReducer, podcastReducer, podcastByIdSliceReducer } from './features/podcast/podcastSlice';
 
 export const store = configureStore({
   reducer: {
-    podcasts: podcastsReducer
+    podcasts: podcastsReducer,
+    podcast: podcastReducer,
+    podcastById: podcastByIdSliceReducer
   }
 });
 

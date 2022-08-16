@@ -14,3 +14,19 @@ export interface IPodcastState {
   hasError: boolean;
   error: IApiError | null;
 }
+
+export interface IPodcastDetail {
+  id: string;
+  title: string;
+  date: string;
+  duration: string;
+  description: string;
+  episodeURL: string;
+}
+
+export interface IPodcastDetailState {
+  isLoading: boolean;
+  data: IPodcastDetail[];
+  hasError: boolean;
+  error: IApiError | null;
+}

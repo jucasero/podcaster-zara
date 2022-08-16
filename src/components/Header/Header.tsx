@@ -10,6 +10,7 @@ interface IHeaderProps {
 
 export const Header: React.FC<IHeaderProps> = ({ title }: IHeaderProps) => {
   const { isLoading: isLoadingPodcasts } = useAppSelector((state) => state.podcasts);
+  const { isLoading: isLoadingPodcastById } = useAppSelector((state) => state.podcastById);
   const { container, title: titleClass } = headerStyles;
 
   return (
@@ -18,7 +19,7 @@ export const Header: React.FC<IHeaderProps> = ({ title }: IHeaderProps) => {
         <Link to={AppRoutes.root}>
           <h1 className={titleClass}>{title}</h1>
         </Link>
-        {isLoadingPodcasts && <Loader />}
+        {(isLoadingPodcasts || isLoadingPodcastById) && <Loader />}
       </header>
       <Outlet />
     </>

@@ -1,0 +1,40 @@
+.container {
+  margin: 20px 0;
+  padding: 20px;
+}
+
+.titleTable {
+  text-align: left;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.titleHead {
+  width: 80%;
+}
+
+.dateHead {
+  width: 10%;
+}
+
+.durationHead {
+  width: 10%;
+}
+
+tr,
+tr td {
+  height: 40px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--tertiary-color);
+}
+
+.titleField {
+  color: var(--primary-color);
+}
+
+.durationField {
+  text-align: center;
+}
