@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import { itunesApi } from '../../../api/itunes';
+import { getItunesApi } from '../../../api/itunes';
 import { convertMsToHM } from '../../../helpers/milisecondsToHours';
 import { AppDispatch } from '../../store';
 import { IPodcast, IPodcastDetail } from './models';
@@ -15,8 +15,8 @@ import {
 export const getPodcasts = () => async (dispatch: AppDispatch) => {
   dispatch(podcastsLoading());
   try {
-    const response = await itunesApi.get('/us/rss/toppodcasts/limit=100/genre=1310/json');
-    const podcastListData = response.data.feed.entry;
+    const response: any = await getItunesApi('/us/rss/toppodcasts/limit=100/genre=1310/json');
+    const podcastListData = response.feed.entry;
     const podcastListFormated: IPodcast[] = podcastListData.map((podcast: any) => ({
       id: podcast.id.attributes['im:id'],
       imageURL: podcast['im:image'][2].label,
@@ -40,11 +40,10 @@ export const getPodcasts = () => async (dispatch: AppDispatch) => {
 export const getPodcastInfoById = (id: string) => async (dispatch: AppDispatch) => {
   dispatch(podcastsByIdLoading());
   try {
-    const itunesUrl = `https://itunes.apple.com/lookup?id=${id}&country=US&media=podcast&entity=podcastEpisode`;
-    const allOriginsResponse: any = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(itunesUrl)}`);
-    const allOriginsResponseObject = await allOriginsResponse.json();
-    const response = JSON.parse(allOriginsResponseObject.contents);
+    const itunesUrl = `/lookup?id=${id}&country=US&media=podcast&entity=podcastEpisode`;
+    const response: any = await getItunesApi(itunesUrl);
     const podcastData = response.results;
+    console.log(response);
     const podcastListFormated: IPodcastDetail[] = podcastData.map((episode: any) => ({
       id: episode.trackId,
       title: episode.trackName,
