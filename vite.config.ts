@@ -1,8 +1,31 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      workbox: {
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/api\.allorigins\.win\/get\?url=https/,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'itunesApi',
+              expiration: {
+                maxAgeSeconds: 86400 //un dia en segundos
+              },
+              cacheableResponse: {
+                statuses: [200]
+              }
+            }
+          }
+        ]
+      }
+    })
+  ],
   server: {
     open: true,
     port: 3000
