@@ -46,6 +46,18 @@ ejecuta el linter en el directorio /src
    yarn lint
 ```
 
+inicia el proceso de pruebas unitarias
+
+```
+   yarn test
+```
+
+genera el informe de cobertura de las pruebas unitarias
+
+```
+   yarn test:coverage
+```
+
 ## Licencia 📓
 
 MIT
