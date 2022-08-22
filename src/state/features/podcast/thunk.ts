@@ -43,7 +43,6 @@ export const getPodcastInfoById = (id: string) => async (dispatch: AppDispatch) 
     const itunesUrl = `/lookup?id=${id}&country=US&media=podcast&entity=podcastEpisode`;
     const response: any = await getItunesApi(itunesUrl);
     const podcastData = response.results;
-    console.log(response);
     const podcastListFormated: IPodcastDetail[] = podcastData.map((episode: any) => ({
       id: episode.trackId,
       title: episode.trackName,

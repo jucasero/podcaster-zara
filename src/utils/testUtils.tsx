@@ -1,19 +1,30 @@
-import { render, RenderOptions } from '@testing-library/react';
-import React from 'react';
-import { Provider } from 'react-redux';
+import React, { PropsWithChildren } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from '../state/store';
+import { Provider } from 'react-redux';
+import { render } from '@testing-library/react';
+import type { RenderOptions } from '@testing-library/react';
+import type { PreloadedState } from '@reduxjs/toolkit';
 
-const AllTheProviders: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  return (
-    <Provider store={store}>
-      <BrowserRouter>{children}</BrowserRouter>
-    </Provider>
-  );
-};
+import { AppStore, RootState, setupStore } from '../state/store';
+interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
+  preloadedState?: PreloadedState<RootState>;
+  store?: AppStore;
+}
 
-const customRender = (ui: React.ReactElement, options?: Omit<RenderOptions, 'wrapper'>) =>
-  render(ui, { wrapper: AllTheProviders, ...options });
+function renderWithProviders(
+  ui: React.ReactElement,
+  { preloadedState = {}, store = setupStore(), ...renderOptions }: ExtendedRenderOptions = {}
+) {
+  function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
+    return (
+      <Provider store={store}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </Provider>
+    );
+  }
+
+  return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
+}
 
 export * from '@testing-library/react';
-export { customRender as render };
+export { renderWithProviders as render };

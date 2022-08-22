@@ -1,13 +1,12 @@
-import '@testing-library/jest-dom';
+import { render, screen } from '../../utils/testUtils';
 import { episodeListTableMock } from '../../mocks/tests';
-import { render } from '../../utils/testUtils';
 import { EpisodesTableCard } from './EpisodesTableCard';
 
 describe('<EpisodesTableCard />', () => {
   test('render component', () => {
-    const component = render(<EpisodesTableCard episodeList={episodeListTableMock} />);
-    component.getByText(episodeListTableMock[0].title);
-    component.getByText(episodeListTableMock[0].date);
-    component.getByText(episodeListTableMock[0].duration);
+    render(<EpisodesTableCard episodeList={episodeListTableMock} />);
+    expect(screen.getByText(episodeListTableMock[0].title)).toBeInTheDocument();
+    expect(screen.getByText(episodeListTableMock[0].date)).toBeInTheDocument();
+    expect(screen.getByText(episodeListTableMock[0].duration)).toBeInTheDocument();
   });
 });

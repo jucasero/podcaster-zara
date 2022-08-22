@@ -1,10 +1,9 @@
-import '@testing-library/jest-dom';
-import { render } from '../../utils/testUtils';
+import { render, screen } from '../../utils/testUtils';
 import { Loader } from './Loader';
 
 describe('<Loader />', () => {
   test('render component', () => {
-    const component = render(<Loader />);
-    component.getByAltText('loader');
+    render(<Loader />);
+    expect(screen.getByAltText('loader')).toBeInTheDocument();
   });
 });
