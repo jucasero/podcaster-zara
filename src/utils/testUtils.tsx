@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter, MemoryRouterProps } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
@@ -9,16 +9,17 @@ import { AppStore, RootState, setupStore } from '../state/store';
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: PreloadedState<RootState>;
   store?: AppStore;
+  routerProps?: MemoryRouterProps;
 }
 
 function renderWithProviders(
   ui: React.ReactElement,
-  { preloadedState = {}, store = setupStore(), ...renderOptions }: ExtendedRenderOptions = {}
+  { preloadedState = {}, store = setupStore(), routerProps = {}, ...renderOptions }: ExtendedRenderOptions = {}
 ) {
   function Wrapper({ children }: PropsWithChildren<{}>): JSX.Element {
     return (
       <Provider store={store}>
-        <BrowserRouter>{children}</BrowserRouter>
+        <MemoryRouter {...routerProps}>{children}</MemoryRouter>
       </Provider>
     );
   }

@@ -10,6 +10,8 @@ describe('<Home />', () => {
   test('it should show that no results were found and after the change in the store show them', async () => {
     render(<Home />);
     expect(screen.getByText('No se encontraron resultados para la búsqueda')).toBeInTheDocument();
-    await waitFor(() => screen.getByText('R&B Money - The Black Effect and iHeartPodcasts'));
+    await waitFor(() =>
+      expect(screen.getByText('R&B Money - The Black Effect and iHeartPodcasts')).toBeInTheDocument()
+    );
   });
 });
