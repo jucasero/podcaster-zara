@@ -1,12 +1,12 @@
 import genericMessageStyles from './genericMessage.module.css';
 
-export interface IMessagePrps {
+export interface IMessageProps {
   title: string | number | undefined;
   subtitle?: string;
   description?: string;
 }
 
-export const GenericMessage: React.FC<IMessagePrps> = ({ title, subtitle, description }: IMessagePrps) => {
+export const GenericMessage: React.FC<IMessageProps> = ({ title, subtitle, description }: IMessageProps) => {
   const { container, marginTop } = genericMessageStyles;
   return (
     <div className={container}>

@@ -1,4 +1,4 @@
-import { SearchInput } from '../SearchInput';
+import { SearchInput } from '../index';
 import searchBarStyles from './searchBar.module.css';
 
 interface ISearchBarProps {

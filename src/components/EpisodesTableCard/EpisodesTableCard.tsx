@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ShadowCard } from '../ShadowCard';
+import { ShadowCard } from '../index';
 import episodesTableCardStyles from './episodesTableCard.module.css';
 
 interface IEpisodesTableCardProps {

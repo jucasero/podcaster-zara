@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../../hooks/useStore';
 import { IPodcast } from '../../state/features/podcast/models';
 import { select } from '../../state/features/podcast/podcastSlice';
-import { PodcastCard } from '../PodcastCard';
+import { PodcastCard } from '../index';
 import podcastListStiles from './podcastList.module.css';
 
 interface IPodcastListProps {

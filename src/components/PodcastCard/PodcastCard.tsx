@@ -1,4 +1,4 @@
-import { ShadowCard } from '../ShadowCard';
+import { ShadowCard } from '../index';
 import podcastCardStyles from './podcastCard.module.css';
 
 interface IPodcastCardProps {

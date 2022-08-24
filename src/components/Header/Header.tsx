@@ -1,7 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
 import { AppRoutes } from '../../constants/Routes';
 import { useAppSelector } from '../../hooks/useStore';
-import { Loader } from '../Loader';
+import { Loader } from '../index';
 import headerStyles from './header.module.css';
 
 interface IHeaderProps {

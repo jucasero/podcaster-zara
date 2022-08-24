@@ -3,13 +3,13 @@ import { GenericMessage, PodcastList, SearchBar } from '../../components';
 import { getPodcasts } from '../../state/features/podcast/thunk';
 import { useAppDispatch, useAppSelector } from '../../hooks/useStore';
 import homeStyles from './home.module.css';
-import { IMessagePrps } from '../../components/GenericMessage';
+import { IMessageProps } from '../../components/index';
 
 export const Home: React.FC = () => {
   const dispatch = useAppDispatch();
   const { data: podcastList, isLoading, hasError, error } = useAppSelector((state) => state.podcasts);
   const [inputSearchValue, setInputSearchValue] = useState<string>('');
-  const [genericMessage, setGenericMessage] = useState<IMessagePrps>({ title: '' });
+  const [genericMessage, setGenericMessage] = useState<IMessageProps>({ title: '' });
 
   const podcastListFiltered = podcastList.filter((podcast) => {
     if (inputSearchValue === '') return podcast;

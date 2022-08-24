@@ -1,4 +1,4 @@
-import { ShadowCard } from '../ShadowCard';
+import { ShadowCard } from '../index';
 import episodesCountCardStyles from './episodesCountCard.module.css';
 
 interface IEpisodesCountCard {
