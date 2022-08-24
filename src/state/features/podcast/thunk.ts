@@ -20,7 +20,7 @@ export const getPodcasts = () => async (dispatch: AppDispatch) => {
     const podcastListFormated: IPodcast[] = podcastListData.map((podcast: any) => ({
       id: podcast.id.attributes['im:id'],
       imageURL: podcast['im:image'][2].label,
-      title: podcast.title.label,
+      title: podcast.title.label.split(' - ')[0],
       author: podcast['im:artist'].label,
       description: podcast.summary.label
     }));
